@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>Sing Up here</h2>
-	<form action="singup" method="post">
+	<form action="singup" >
 		Full Name<input type="text" name="name">
 		Email <input type="email" name="email">
 		Password<input type="password" name="password">

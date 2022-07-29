@@ -1,5 +1,7 @@
 package com.spring.mvc.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,14 @@ public class HomeController {
 	@Autowired
 	private UserDao userDao;
 
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
 	@RequestMapping("/home")
 	public String home(Model model) {
 		System.out.println("Home url mapping by controller");
@@ -28,10 +38,17 @@ public class HomeController {
 		return "services";
 	}
 
-	@RequestMapping(path = "/singup", method = RequestMethod.POST)
+	@RequestMapping("/singup")
 	public String singUp(@ModelAttribute User user, Model model) {
 		int result = userDao.saveUser(user);
 		System.out.println("User saved ID: " + result);
 		return "singing";
+	}
+
+	@RequestMapping("/viewUsers")
+	public String getAllUsers(Model model) {
+		List<User> allUser = userDao.getAllUser();
+		model.addAttribute("allUsers", allUser);
+		return "view_users";
 	}
 }

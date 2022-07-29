@@ -10,6 +10,8 @@
 	<br>
 	<h2>Sing Up</h2>
 	<a href="singup.jsp">Sing Up</a>
+	<br>
+	<a href="viewUsers">View All Users</a>
 
 </body>
 </html>

@@ -9,14 +9,13 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx.xsd">
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+   ">
 
 	<!-- Enabling all annotations -->
 	<tx:annotation-driven />
 
-	<!-- Scanning within the package and sub-packages -->
-	<context:component-scan
-		base-package="com.spring.mvc" />
+	<context:component-scan base-package="com.spring.mvc" />
 
 	<!-- Configuring view resolver -->
 	<bean
@@ -26,7 +25,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!-- Spring ORM (Hibernate) configuration -->
+	<!-- Spring ORM (Hibernate) Configuration -->
 	<bean
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		name="dsObject">
@@ -56,20 +55,18 @@
 		</property>
 	</bean>
 
+
 	<bean class="org.springframework.orm.hibernate5.HibernateTemplate"
 		name="hiberTemp">
 		<property name="sessionFactory" ref="localSessionFactoryBean" />
 	</bean>
 
-	<bean class="com.spring.mvc.dao.UserDao" name="userDao">
-		<property name="hibernateTemplate" ref="hiberTemp" />
-	</bean>
-
-	<!-- Providing transaction manager to enable Writing of data -->
+	<!-- Providing transaction manager to turn on writing mode -->
 	<bean
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager"
 		name="transactionManager">
 		<property name="sessionFactory" ref="localSessionFactoryBean" />
 	</bean>
+
 
 </beans>
