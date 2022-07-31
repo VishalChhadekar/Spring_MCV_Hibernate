@@ -1,1 +1,1 @@
-# Spring_MCV_Hibernate
+# Spring_MVC_Hibernate
